@@ -6,5 +6,7 @@ vaderSentiment
 pandas
 numpy
 awesome_streamlit
-PIL
 plotly
+matplotlib
+openpyxl
+statsmodels
