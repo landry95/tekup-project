@@ -61,6 +61,11 @@ def write():
         st.image(image, use_column_width=True)
         st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
 
+        st.markdown('''<p> <h2> AMIRA FORECASTING </h2> </p> </div>''', unsafe_allow_html=True)
+        image = Image.open("./src/img/amira_forcasting.PNG")
+        st.image(image, use_column_width=True)
+        st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
+
 
 #         st.markdown(
 #             """## Contributions
