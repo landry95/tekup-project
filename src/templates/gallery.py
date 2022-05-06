@@ -10,7 +10,7 @@ from PIL import Image
 # st.image(image, use_column_width=True)
 def write():
     """Used to write the page in the app.py file"""
-    image = Image.open("./src/img/1.png")
+    image = Image.open("./src/img/1.PNG")
     st.sidebar.image(image, use_column_width=True)
     st.markdown('<h2><b><font color=‘#5bc0de’> <i><u>BI Project : </u></i> DSEN-1-A 2021/2022 !</font></b></h2>', unsafe_allow_html=True)
     with st.spinner("Loading About ..."):
