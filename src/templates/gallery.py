@@ -30,17 +30,17 @@ def write():
         st.image(image, use_column_width=True)
         st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
 
-        st.markdown('''<p> winter model plot </p>''', unsafe_allow_html=True)
+        st.markdown('''<p> Holt model plot </p>''', unsafe_allow_html=True)
         image = Image.open("./src/img/winterplot.PNG")
         st.image(image, use_column_width=True)
         st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
 
-        st.markdown('''<p> winter model details</p> </div>''', unsafe_allow_html=True)
+        st.markdown('''<p> Holt model details</p> </div>''', unsafe_allow_html=True)
         image = Image.open("./src/img/winter_details.PNG")
         st.image(image, use_column_width=True)
         st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
 
-        st.markdown('''<p> winter forecastion untill 2025 </p> </div>''', unsafe_allow_html=True)
+        st.markdown('''<p> Holt forecastion untill 2025 </p> </div>''', unsafe_allow_html=True)
         image = Image.open("./src/img/winter_prediction.PNG")
         st.image(image, use_column_width=True)
         #st.image(Image.open("./src/img/export.png"), use_column_width=True)
