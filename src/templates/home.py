@@ -59,16 +59,18 @@ def write():
         
         #This is executed when the page loads
         #Form with a textarea
+        st.write("Please use the navigation bar to walk through the different functionnalities of the application")
         with st.form("my_form"):
-            st.write("## This is a test")
-            st.markdown('<b>So Exited to analyse your text.:</b>', unsafe_allow_html=True)
-            text = st.text_area("Write here", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
+            st.write("If you have any question about this projects, ")
+            #st.write("## use this form")
+            st.markdown('<b>use this form:</b>', unsafe_allow_html=True)
+            text = st.text_area("Write your message here", value="", height=None, max_chars=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
             # Every form must have a submit button.
             submitted = st.form_submit_button("Submit")
             if submitted:
-                st.write("Your Text : ", text)
-                #st.markdown('<br><br><b>Sentiment:</b>', unsafe_allow_html=True)
-                sentiment_analysis(text)
+                st.write("Your Message : ", text)
+                st.markdown('<br><br><b>THank you. I\'ll be in touch with you soon:</b>', unsafe_allow_html=True)
+               # sentiment_analysis(text)
         
         
         

@@ -10,51 +10,54 @@ from PIL import Image
 # st.image(image, use_column_width=True)
 def write():
     """Used to write the page in the app.py file"""
-    image = Image.open("./src/img/1.PNG")
+    image = Image.open("./src/img/1.png")
     st.sidebar.image(image, use_column_width=True)
-    st.markdown('<h2><b><font color=‘#5bc0de’> <i><u>Project : </u></i> Web-App for data visualization !</font></b></h2>', unsafe_allow_html=True)
+    st.markdown('<h2><b><font color=‘#5bc0de’> <i><u>BI Project : </u></i> DSEN-1-A 2021/2022 !</font></b></h2>', unsafe_allow_html=True)
     with st.spinner("Loading About ..."):
         # ast.shared.components.title_awesome(" - About")
         st.markdown('''
-                <h3 style="font-family: cursive; color: rgb(255, 127, 39)"><b>Demo in video</b></h3>
-                <p style="margin-top: 10px; margin-bottom: 50px"> 
-                    This is a demonstration of the application
-                </p>
+                <h3 style="font-family: cursive; color: rgb(255, 127, 39)"><b>SOme Images of our previous tests</b></h3>
+                
                 </p><hr style="border:1px solid black">
             ''', 
             unsafe_allow_html=True
         )
 
-        st.markdown('''<p> </p>''', unsafe_allow_html=True)
-        image = Image.open("./src/img/5.PNG")
-        st.image(image, use_column_width=True)
-        image = Image.open("./src/img/11.PNG")
-        st.image(image, use_column_width=True)
-        st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
-
-        st.markdown('''<p> Shemas from TigerGraph </p>''', unsafe_allow_html=True)
-        image = Image.open("./src/img/schema.PNG")
+        st.markdown('''<p> Serie plot</p>''', unsafe_allow_html=True)
+        #image = Image.open("./src/serieplot.PNG")
+        #st.image(image, use_column_width=True)
+        image = Image.open("./src/img/winter_plot.PNG")
         st.image(image, use_column_width=True)
         st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
 
-        st.markdown('''<p> Graph Explorer from TigerGraph cloud</p> </div>''', unsafe_allow_html=True)
-        image = Image.open("./src/img/graph_explorer.PNG")
+        st.markdown('''<p> winter model plot </p>''', unsafe_allow_html=True)
+        image = Image.open("./src/img/winterplot.PNG")
         st.image(image, use_column_width=True)
         st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
 
-        st.markdown('''<p> Data maping  from TigerGraph cloud </p> </div>''', unsafe_allow_html=True)
-        image = Image.open("./src/img/map_data.PNG")
-        st.image(image, use_column_width=True)
-        st.image(Image.open("./src/img/export.png"), use_column_width=True)
-        st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
-
-        st.markdown('''<p> Query example from TigerGraph cloud </p> </div>''', unsafe_allow_html=True)
-        image = Image.open("./src/img/example_querry.PNG")
+        st.markdown('''<p> winter model details</p> </div>''', unsafe_allow_html=True)
+        image = Image.open("./src/img/winter_details.PNG")
         st.image(image, use_column_width=True)
         st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
 
-        st.markdown('''<p> Graphistory platform </p> </div>''', unsafe_allow_html=True)
-        image = Image.open("./src/img/graphistory.PNG")
+        st.markdown('''<p> winter forecastion untill 2025 </p> </div>''', unsafe_allow_html=True)
+        image = Image.open("./src/img/winter_prediction.PNG")
+        st.image(image, use_column_width=True)
+        #st.image(Image.open("./src/img/export.png"), use_column_width=True)
+        #st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
+
+
+        st.markdown('''<h2> SIMPLE ETS </h2> </div>''', unsafe_allow_html=True)
+        st.markdown('''<p> Simple plot </p> </div>''', unsafe_allow_html=True)
+        image = Image.open("./src/img/simple_plot.PNG")
+        st.image(image, use_column_width=True)
+        st.markdown('''<p> SIMPLE ETS Details </p> </div>''', unsafe_allow_html=True)
+        image = Image.open("./src/img/simple_details.PNG")
+        st.image(image, use_column_width=True)
+        st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
+        
+        st.markdown('''<p> SIMPLE ETS Forecasting </p> </div>''', unsafe_allow_html=True)
+        image = Image.open("./src/img/simple_forcast.PNG")
         st.image(image, use_column_width=True)
         st.markdown('''</p><hr style="border:1px solid black">''', unsafe_allow_html=True)
 

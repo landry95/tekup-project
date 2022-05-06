@@ -18,6 +18,7 @@ import numpy as np
 import plotly.express as px
 from statsmodels.tsa.exponential_smoothing.ets import ETSModel
 import altair as alt
+from sklearn.metrics import accuracy_score
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
 
@@ -79,39 +80,100 @@ def write():
     #st.write(dataset)
     data = dataset[["Geographic area", "Indicator", "TIME_PERIOD", "OBS_VALUE"]]
     
-    
-    option = st.selectbox(
+    col1, col2 = st.columns(2)
+    option = col1.selectbox(
      'Select the country',
      set(dataset["Geographic area"]))
     
+    indicator = col2.selectbox(
+     'Select an indicator',
+     set(dataset["Indicator"]))
+    
     data = data.loc[dataset['Geographic area'] == option]
     data = data.astype({"TIME_PERIOD": str}, errors='raise')
-    infant = data[data['Indicator'] == "Infant deaths"]
-    child = data[data['Indicator'] == "Child deaths (aged 1-4 years)"]
+    infant = data[data['Indicator'] == indicator]
+    """child = data[data['Indicator'] == "Child deaths (aged 1-4 years)"]
     neo_natal = data[data['Indicator'] == "Neonatal deaths"]
-    aged = data[data['Indicator'] == "Deaths aged 15 to 24"]
+    aged = data[data['Indicator'] == "Deaths aged 15 to 24"]"""
     
-    st.write(data)
+    st.write(infant)
     plt.rcParams["figure.figsize"] = (12, 8)
     
     infant_serie = pd.Series(list(infant["OBS_VALUE"]), index=pd.date_range("2011", "2020", freq="AS"))
-    
     st.line_chart(infant_serie)
+    st.write(infant_serie)
     
-    model = ETSModel(infant_serie)
-    fit = model.fit(maxiter=10000)
+
+
+########################"Holt’ method
+    st.write("")
+    st.markdown('<h4 style="text-align: center; font-family: cursive; color: rgb(41, 43, 44)"><b>Holt’ Model</b></h4>', unsafe_allow_html=True)
+
+    holt_model = ETSModel(
+        infant_serie,
+        error="add",
+        trend="add",
+        damped_trend=True,
+        seasonal_periods=4,
+    )
+    fit_holt_model = holt_model.fit()
+    st.line_chart(fit_holt_model.fittedvalues)
+    st.write(fit_holt_model.summary())
+    st.write(fit_holt_model.fittedvalues)
     
-    """st.line_chart(infant)"""
-    st.line_chart(fit.fittedvalues)
-    st.write(infant_serie, fit.summary())
+    pred = fit_holt_model.get_prediction(start="2021-01-01T00:00:00", end="2025-01-01T00:00:00")
+    st.write(pred.summary_frame())
+    
+
+########################"Simple ETS’  method
+    st.write("")
+    st.markdown('<h4 style="text-align: center; font-family: cursive; color: rgb(41, 43, 44)"><b>Simple ETS</b></h4>', unsafe_allow_html=True)
+    
+    
+    model_simple = ETSModel(infant_serie)
+    fit_simple = model_simple.fit()
+    st.line_chart(fit_simple.fittedvalues)
+    st.write(fit_simple.summary())
+    
+    pred_simple = fit_simple.get_prediction(start="2021-01-01T00:00:00", end="2025-01-01T00:00:00")
+    st.write(pred_simple.summary_frame())
     
     
     
-    
+########################"heuristic’  method
+    st.write("")
+    st.markdown('<h4 style="text-align: center; font-family: cursive; color: rgb(41, 43, 44)"><b>Heuristic Model</b></h4>', unsafe_allow_html=True)
+
     model_heuristic = ETSModel(infant_serie, initialization_method="heuristic")
     fit_heuristic = model_heuristic.fit()
     st.line_chart(fit_heuristic.fittedvalues)
     st.write(fit_heuristic.summary())
+    
+    pred_heuristic = fit_heuristic.get_prediction(start="2021-01-01T00:00:00", end="2025-01-01T00:00:00")
+    st.write(pred_heuristic.summary_frame())
+    
+    
+########################"Holt-Winters’ seasonal method
+    st.write("")
+    st.markdown('<h4 style="text-align: center; font-family: cursive; color: rgb(41, 43, 44)"><b>Winters’ Model</b></h4>', unsafe_allow_html=True)
+
+    model_winter = ETSModel(
+        infant_serie,
+        error="add",
+        trend="add",
+        seasonal="add",
+        damped_trend=True,
+        seasonal_periods=4,
+    )
+    fit_model_winter = model_winter.fit()
+    st.line_chart(fit_model_winter.fittedvalues)
+    st.write(fit_model_winter.summary())
+    
+    pred_winter = fit_model_winter.get_prediction(start="2021-01-01T00:00:00", end="2025-01-01T00:00:00")
+    st.write(pred_winter.summary_frame())
+    
+    
+
     return
 
 

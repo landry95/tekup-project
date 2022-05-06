@@ -34,8 +34,8 @@ PAGES = {
     "Home": src.templates.home,
     "BI Part": src.templates.use_dataset,
     "AI Part": src.templates.ai_part,
-    #"gallery": src.templates.gallery,
     "About": src.templates.about,
+    "gallery": src.templates.gallery,
 }
 
 st.sidebar.markdown('<h4 style="text-align: center; font-family: cursive; color: rgb(255, 127, 39)"><b>PROJET BI, 2021-2022</b></h4>', unsafe_allow_html=True)
